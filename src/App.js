@@ -1,16 +1,21 @@
-import React from "react";
-import Header from "./components/Header";
-import HeroBanner from "./components/HeroBanner";
-import { Container } from "react-bootstrap";
-import ProductList from "./components/ProductList";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import CourseList from "./components/CourseList";
+import CourseDetail from "./components/CourseDetail";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 function App() {
   return (
-    <Container>
-      <Header />
-      <HeroBanner />
-      <ProductList />
-    </Container>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/courses" />} />
+        <Route path="/courses" element={<CourseList />} />
+        <Route path="/detail/:id" element={<CourseDetail />} />
+        <Route path="/classes" element={<Navigate to="/courses" />} />
+        <Route path="*" element={<Navigate to="/courses" />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
